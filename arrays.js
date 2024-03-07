@@ -1,4 +1,4 @@
-export const arrayLength = (arr) => {
+export const length = (arr) => {
   let r = 0;
   // eslint-disable-next-line no-unused-vars
   for (const iterator of arr) {
@@ -9,13 +9,14 @@ export const arrayLength = (arr) => {
 };
 
 export const push = (arr, ...elements) => {
-  if (arrayLength(elements) <= 0) return 0;
-  const elementsArr = elements;
-  for (const element of elementsArr) {
-    arr[arrayLength(arr)] = element;
+  if (length(elements) <= 0) return 0;
+  // No es necesario guardarlo en una variable, se puede emplear directamente.
+  // const elementsArr = elements;
+  for (const element of elements) {
+    arr[length(arr)] = element;
   }
 
-  return arrayLength(arr);
+  return length(arr);
 };
 
 export const pop = (arr) => {
@@ -47,17 +48,16 @@ export const shift = (arr) => {
 };
 
 export const unshift = (arr, ...elements) => {
-  if (arrayLength(elements) <= 0) return 0;
-  const elementsArr = elements;
-  for (let i = arrayLength(arr); i >= 0; i--) {
+  if (length(elements) <= 0) return 0;
+  for (let i = length(arr); i >= 0; i--) {
     if (i === 0) {
-      for (let j = 0; j < arrayLength(elements); j++) {
-        push(arr, elementsArr[j]);
+      for (let j = 0; j < length(elements); j++) {
+        push(arr, elements[j]);
       }
     }
   }
 
-  return arrayLength(arr);
+  return length(arr);
 };
 
 export const some = (arr, callbackFunction) => {
@@ -66,4 +66,13 @@ export const some = (arr, callbackFunction) => {
   }
 
   return false;
+};
+
+export const map = (arr, callbackFunction) => {
+  const newArr = [];
+  for (const element of arr) {
+    push(newArr, callbackFunction(element));
+  }
+
+  return newArr;
 };

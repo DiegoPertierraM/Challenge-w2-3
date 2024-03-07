@@ -1,45 +1,45 @@
-import { arrayLength, push, pop, shift, unshift, some } from './arrays';
+import { length, push, pop, shift, unshift, some, map } from './arrays';
 
 describe('arrayLength', () => {
   test('should be 0 when argument is []', () => {
     const x = [];
     const expected = 0;
-    const r = arrayLength(x);
+    const r = length(x);
     expect(r).toBe(expected);
   });
 
   test('should be 1 when argument is [4]', () => {
     const x = [4];
     const expected = 1;
-    const r = arrayLength(x);
+    const r = length(x);
     expect(r).toBe(expected);
   });
 
   test('should be 3 when argument is [false, false, false]', () => {
     const x = [false, false, false];
     const expected = 3;
-    const r = arrayLength(x);
+    const r = length(x);
     expect(r).toBe(expected);
   });
 
   test('should be 3 when argument is [undefined, undefined, undefined]', () => {
     const x = [undefined, undefined, undefined];
     const expected = 3;
-    const r = arrayLength(x);
+    const r = length(x);
     expect(r).toBe(expected);
   });
 
   test('should be 3 when argument is [[], [], []]', () => {
     const x = [[], [], []];
     const expected = 3;
-    const r = arrayLength(x);
+    const r = length(x);
     expect(r).toBe(expected);
   });
 
   test('should be 3 when argument is [{}, {}, {}]', () => {
     const x = [{}, {}, {}];
     const expected = 3;
-    const r = arrayLength(x);
+    const r = length(x);
     expect(r).toBe(expected);
   });
 });
@@ -132,7 +132,7 @@ describe('shift', () => {
 });
 
 describe('unshift', () => {
-  test('x should return 0 when only argument is []', () => {
+  test('should return 0 when only argument is []', () => {
     const x = [];
     const expected = 0;
     const r = unshift(x);
@@ -158,12 +158,22 @@ describe('unshift', () => {
   });
 });
 
-describe.only('some', () => {
-  test('x should return true when arguments are [3, 5, 8, 1] and (element) => element % 2 === 0', () => {
+describe('some', () => {
+  test('should return true when arguments are [3, 5, 8, 1] and (element) => element % 2 === 0', () => {
     const x = [3, 5, 8, 1];
     const y = (element) => element % 2 === 0;
     const expected = true;
     const r = some(x, y);
     expect(r).toBe(expected);
+  });
+});
+
+describe('map', () => {
+  test('should return [4,8,12] when arguments are [2, 4, 6] and (element) => element * 2', () => {
+    const x = [2, 4, 6];
+    const y = (element) => element * 2;
+    const expected = [4, 8, 12];
+    const r = map(x, y);
+    expect(r).toStrictEqual(expected);
   });
 });
