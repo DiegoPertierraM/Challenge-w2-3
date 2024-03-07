@@ -31,18 +31,27 @@ export const shift = (arr) => {
   if (arr.length === 0) return undefined;
 
   const removedElement = arr[0];
-  const reversedArr = [];
-  for (let i = arr.length - 1; i >= 0; i--) {
-    push(reversedArr, arr[i]);
+
+  // Me he complicado mucho la vida
+  //
+  // const reversedArr = [];
+  // for (let i = arr.length - 1; i >= 0; i--) {
+  //   push(reversedArr, arr[i]);
+  // }
+
+  // reversedArr.length -= 1;
+
+  // const finalArr = [];
+
+  // for (let i = reversedArr.length - 1; i >= 0; i--) {
+  //   push(finalArr, reversedArr[i]);
+  // }
+
+  for (let i = 0; i < arr.length - 1; i++) {
+    arr[i] = arr[i + 1];
   }
 
-  reversedArr.length -= 1;
-
-  const finalArr = [];
-
-  for (let i = reversedArr.length - 1; i >= 0; i--) {
-    push(finalArr, reversedArr[i]);
-  }
+  arr.length--;
 
   return removedElement;
 };
@@ -58,6 +67,18 @@ export const unshift = (arr, ...elements) => {
   }
 
   return length(arr);
+
+  //
+  // if (length(elements) <= 0) return 0;
+  // const increase = length(elements);
+  // for (let i = length(arr); i >= 0; i--) {
+  //   arr[i+increase] = arr[i]
+  // }
+  // for (let i = 0; i < increase; i++) {
+  //   arr[i] = elements[i];
+  // }
+
+  // return length(arr);
 };
 
 export const some = (arr, callbackFunction) => {
