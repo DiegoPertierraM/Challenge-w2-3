@@ -49,8 +49,12 @@ export const shift = (arr) => {
 export const unshift = (arr, ...elements) => {
   if (arrayLength(elements) <= 0) return 0;
   const elementsArr = elements;
-  for (const element of elementsArr) {
-    arr[arrayLength(arr)] = element;
+  for (let i = arrayLength(arr); i >= 0; i--) {
+    if (i === 0) {
+      for (let j = 0; j < arrayLength(elements); j++) {
+        push(arr, elementsArr[j]);
+      }
+    }
   }
 
   return arrayLength(arr);

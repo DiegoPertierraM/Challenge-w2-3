@@ -130,3 +130,30 @@ describe('shift', () => {
     expect(r).toBe(expected);
   });
 });
+
+describe.only('unshift', () => {
+  test('x should return 0 when only argument is []', () => {
+    const x = [];
+    const expected = 0;
+    const r = unshift(x);
+    expect(r).toBe(expected);
+  });
+
+  test('should return 2 when arguments are [] and "perro", 8', () => {
+    const x = [];
+    const y = 'perro';
+    const z = 8;
+    const expected = 2;
+    const r = unshift(x, y, z);
+    expect(r).toBe(expected);
+  });
+
+  test('x should become [6, undefined, null] when arguments are [6] and undefined, null', () => {
+    const x = [6];
+    const y = undefined;
+    const z = null;
+    const expected = [6, undefined, null];
+    unshift(x, y, z);
+    expect(x).toStrictEqual(expected);
+  });
+});
