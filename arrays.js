@@ -59,3 +59,11 @@ export const unshift = (arr, ...elements) => {
 
   return arrayLength(arr);
 };
+
+export const some = (arr, callbackFunction) => {
+  for (const element of arr) {
+    if (callbackFunction(element)) return true;
+  }
+
+  return false;
+};
