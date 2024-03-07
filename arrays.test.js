@@ -131,7 +131,7 @@ describe('shift', () => {
   });
 });
 
-describe.only('unshift', () => {
+describe('unshift', () => {
   test('x should return 0 when only argument is []', () => {
     const x = [];
     const expected = 0;
