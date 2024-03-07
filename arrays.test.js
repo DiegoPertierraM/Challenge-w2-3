@@ -1,4 +1,4 @@
-import { arrayLength, push, pop, shift, unshift } from './arrays';
+import { arrayLength, push, pop, shift, unshift, some } from './arrays';
 
 describe('arrayLength', () => {
   test('should be 0 when argument is []', () => {
@@ -155,5 +155,15 @@ describe('unshift', () => {
     const expected = [6, undefined, null];
     unshift(x, y, z);
     expect(x).toStrictEqual(expected);
+  });
+});
+
+describe.only('some', () => {
+  test('x should return true when arguments are [3, 5, 8, 1] and (element) => element % 2 === 0', () => {
+    const x = [3, 5, 8, 1];
+    const y = (element) => element % 2 === 0;
+    const expected = true;
+    const r = some(x, y);
+    expect(r).toBe(expected);
   });
 });
